@@ -208,11 +208,15 @@ class Create extends Component {
     else if(this.state.creationStage === "step3") {
 
       var infList = [];
-      for (let i=0; i<this.state.influencers.length; i++) {
+      console.log(123);
+      console.log(this.state.influencers)
+      // console.log(this.state.selectedList)
+      for (inf in this.state.influencers) {
+         inf = ""+inf;
          for(let j=0; j<this.state.selectedList.length; j++) {
-            if(this.state.influencers[i].name==this.state.selectedList[j]) {
-               infList.push(this.state.influencers[i]);
-               console.log(this.state.influencers[i])
+            if(this.state.influencers[inf].name==this.state.selectedList[j]) {
+               infList.push(this.state.influencers[inf]);
+               console.log(this.state.influencers[inf])
             }
 
          }
@@ -225,9 +229,15 @@ class Create extends Component {
           <p></p>
 
             {infList.map(item => (
-             <div>
-               <h4>{item.name}</h4>
-             </div>
+               <div id={this.props.id}>
+                <div className="influencerImg">
+                  <img src={item.imageUrl} />
+                </div>
+                <div className="influencerContent">
+                  <h3>{item.name}</h3>
+                  <p>{item.followers} followers</p>
+                </div>
+              </div>
 
             ))}
 
