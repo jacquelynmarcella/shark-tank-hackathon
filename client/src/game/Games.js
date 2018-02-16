@@ -5,7 +5,10 @@ class Games extends Component {
   render(){
     return(
      <div>
-     	Games route. Should we have states here for active, upcoming, completed as we do in nav, then trigger those states from nav click?
+     	<h1>Games</h1>
+     	<h3>Active</h3>
+     	<h3>Upcoming</h3>
+     	<h3>Completed</h3>
      </div>
 
       );
