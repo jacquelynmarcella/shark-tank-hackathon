@@ -14,6 +14,7 @@ import Signup from './auth/Signup.js';
 import Create from './game/Create.js';
 import Leagues from './game/Leagues.js';
 import Games from './game/Games.js';
+import View from './game/View.js';
 import Backend from './Backend.js';
 
 class App extends Component {
@@ -96,6 +97,8 @@ class App extends Component {
                 () => (<Games user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
               <Route path="/backend" component={
                 () => (<Backend user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+               <Route path="/view" component={
+                 () => (<View user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
             </div>
           </div>
         </Router>

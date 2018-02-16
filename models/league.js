@@ -17,9 +17,9 @@ var leagueScheme = new mongoose.Schema ({
       id: {
          type: String
       },
-      influencer: {
+      influencer: [{
          type: String
-      }
+      }]
    }],
    influencer: [{
       name: {
@@ -39,4 +39,3 @@ var leagueScheme = new mongoose.Schema ({
 var League = mongoose.model('League', leagueScheme);
 
 module.exports = League;
-

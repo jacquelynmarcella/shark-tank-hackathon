@@ -28,7 +28,7 @@ class InfluencerOption extends Component {
       this.setState({
         selected: false
       })
-    } 
+    }
     console.log(this.state);
   }
 
@@ -75,7 +75,7 @@ class Create extends Component {
   }
 
   handleChange = (event) => {
-    this.setState({ 
+    this.setState({
       [event.target.name]: event.target.value
     });
     console.log(this.state);
@@ -97,12 +97,14 @@ class Create extends Component {
           message: 'You can only select 3 players for your team.'
         })
       }
-      console.log("Axios call")
+      console.log("Axios call");
+
       axios.post('/leagues/add',{
         data: base.state,
         user: userId
       }).then(response => {
         console.log("Got through post route", response)
+        base.setState({creationStage:"step3"});
       }).catch(err => {
         console.log("error from backend", err)
       })
@@ -116,7 +118,7 @@ class Create extends Component {
     if (selectedPeople.includes(data)) {
       for (var i=selectedPeople.length-1; i>=0; i--) {
           if (selectedPeople[i] == data) {
-            selectedPeople.splice(i, 1);  
+            selectedPeople.splice(i, 1);
           }
       }
     } else {
@@ -129,7 +131,7 @@ class Create extends Component {
 
     console.log(this.state)
   }
-    
+
   componentDidMount = () => {
     //Random generator for short shareable key
     let randomKey = Math.random().toString(36).replace(/[^A-Za-z0-9]+/g, '').substr(0, 5).toUpperCase();
@@ -153,7 +155,7 @@ class Create extends Component {
   }
 
   render(){
-    var display; 
+    var display;
     var message;
 
      var inf2 = [];
@@ -197,12 +199,48 @@ class Create extends Component {
             <br />
             <center>
               {this.state.message}<br />
-             <input type="submit" value="Create League" onClick={this.handleSubmit} />           
+             <input type="submit" value="Create League" onClick={this.handleSubmit} />
             </center>
           </div>
         );
 
     }
+    else if(this.state.creationStage === "step3") {
+
+      var infList = [];
+      for (let i=0; i<this.state.influencers.length; i++) {
+         for(let j=0; j<this.state.selectedList.length; j++) {
+            if(this.state.influencers[i].name==this.state.selectedList[j]) {
+               infList.push(this.state.influencers[i]);
+               console.log(this.state.influencers[i])
+            }
+
+         }
+      }
+
+      display = (
+        <div>
+          <h1>{this.state.name}</h1>
+          <h2>Your team:</h2>
+          <p></p>
+
+            {infList.map(item => (
+             <div>
+               <h4>{item.name}</h4>
+             </div>
+
+            ))}
+
+          <br />
+          <center>
+            {this.state.message}<br />
+
+          </center>
+        </div>
+      );
+
+    }
+
 
     return(
      <div>
