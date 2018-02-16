@@ -15,17 +15,17 @@ class SiteNav extends Component {
               <Link to="/">Home</Link>
             </NavItem>
             <NavItem eventKey={2}>
-              <Link to="/">Create League</Link>
+              <Link to="/create">Create League</Link>
             </NavItem>
             <NavItem eventKey={3}>
-              <Link to="/">Your Leagues</Link>
+              <Link to="/leagues">Your Leagues</Link>
             </NavItem>
             <NavDropdown eventKey={4} title="Games" id="basic-nav-dropdown">
-              <MenuItem eventKey={4.1}>Active</MenuItem>
+              <MenuItem eventKey={4.1}><Link to="/games">Active</Link></MenuItem>
               <MenuItem divider />
-              <MenuItem eventKey={4.2}>Past</MenuItem>
+              <MenuItem eventKey={4.2}><Link to="/games">Past</Link></MenuItem>
               <MenuItem divider />
-              <MenuItem eventKey={4.3}>Upcoming</MenuItem>
+              <MenuItem eventKey={4.3}><Link to="/games">Upcoming</Link></MenuItem>
             </NavDropdown>
             <NavItem eventKey={5}>
               <Link to="/profile">My Profile</Link>

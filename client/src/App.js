@@ -10,6 +10,11 @@ import Login from './auth/Login.js';
 import Profile from './Profile.js';
 import Signup from './auth/Signup.js';
 
+// Game routes
+import Create from './game/Create.js';
+import Leagues from './game/Leagues.js';
+import Games from './game/Games.js';
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -82,7 +87,12 @@ class App extends Component {
                 () => (<Signup user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
               <Route path="/profile" component={
                 () => (<Profile user={this.state.user} setFlash={this.setFlash} />)} />
-             
+              <Route path="/create" component={
+                () => (<Create user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+              <Route path="/leagues" component={
+                () => (<Leagues user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+              <Route path="/games" component={
+                () => (<Games user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
             </div>
           </div>
         </Router>

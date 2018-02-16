@@ -41,22 +41,25 @@ class Login extends Component {
     }
     else {
       form = (<form onSubmit={this.handleSubmit}>
-                <div>
+                <label>
+                  Email
                   <input name="Email"
-                       placeholder="Enter your email"
+                       placeholder="Email"
+                       type="text" 
                        value={this.state.email}
                        onChange={this.handleEmailChange}
                   />
-                </div>
-                <div>
+                </label>
+                <label>
+                Password
                   <input name="Password"
-                       placeholder="Enter your password"
+                       placeholder="Password"
                        type="password"
                        value={this.state.password}
                        onChange={this.handlePasswordChange}
                   />
-                </div>
-                <input type="submit" value="Login" className="btn-primary" />
+                </label>
+                <input type="submit" value="Login" />
               </form>);
     }
     return (
