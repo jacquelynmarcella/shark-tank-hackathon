@@ -5,7 +5,7 @@ import axios from 'axios';
 import Flash from './layout/Flash.js';
 import Footer from './layout/Footer.js';
 import Home from './Home.js';
-import Nav from './layout/Nav.js';
+import SiteNav from './layout/Nav.js';
 import Login from './auth/Login.js';
 import Profile from './Profile.js';
 import Signup from './auth/Signup.js';
@@ -23,9 +23,9 @@ class App extends Component {
 
   getUser = () => {
     // If there is a token in localStorage
-    let token = localStorage.getItem('mernToken');
+    let token = localStorage.getItem('sharkHackathonToken');
     if (token === 'undefined' || token === null || token === '' || token === undefined) {
-      localStorage.removeItem('mernToken');
+      localStorage.removeItem('sharkHackathonToken');
       this.setState({
         token: '',
         user: null
@@ -36,7 +36,7 @@ class App extends Component {
         token: token
       }).then(response => {
         //   Store the token and user
-        localStorage.setItem('mernToken', response.data.token);
+        localStorage.setItem('sharkHackathonToken', response.data.token);
         this.setState({
           token: response.data.token,
           user: response.data.user
@@ -72,7 +72,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <div>
-            <Nav user={this.state.user} updateUser={this.getUser} />
+            <SiteNav user={this.state.user} updateUser={this.getUser} />
             <div className="space">
               <Flash flashType={this.state.flashType} flash={this.state.flash} setFlash={this.setFlash} cancelFlash={this.cancelFlash} />
               <Route exact path="/" component={Home} />
@@ -85,7 +85,6 @@ class App extends Component {
             </div>
           </div>
         </Router>
-        <Footer />
       </div>
     );
   }

@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
+import Signup from './auth/Signup.js';
+import Flash from './layout/Flash.js';
 
 class Home extends Component {
   render(){
     return (
-        <p>This is a home page. You probably ought to write something here</p>
+        <div>
+        	<header>
+        		Header image here 
+        	</header>
+        	<h2>Signup</h2>
+        	<Signup />
+        </div>
       );
   }
 }
