@@ -7,7 +7,8 @@ class Home extends Component {
     return (
         <div>
         	<header>
-        		Header image here 
+        		<h1>Welcome text</h1>
+            <h3>Selling point!</h3>
         	</header>
         	<h2>Signup</h2>
         	<Signup />

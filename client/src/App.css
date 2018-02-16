@@ -5,13 +5,20 @@ header {
   margin: 0 auto;
   margin-top: -70px; 
   padding: 200px 0;
+  background-image: url('https://i.imgur.com/undefined.png') no-repeat;
+  background-size: cover;
 }
+
+
 
 body {
   font-family: Helvetica Neue;
-  color: #2D4F76;
   font-size: 18px;
   background-color: #DCDCDC;
+}
+
+h1, h2, h3, h4 {
+  color: #2D4F76;
 }
 
 a {
@@ -29,20 +36,16 @@ a {
   padding: 10px;
 }
 
-.nav.navbar-nav ul li:hover {
-  padding: 10px;
-  background-color: #AFAFAF;
-}
-
 .navLogo {
-  max-width: 150px;
+  max-width: 450px;
+  filter: invert(100%);
 }
 
 nav {
   background: #2D4F76;
 }
 
-nav a {
+nav a, a#basic-nav-dropdown {
   font-size: 24px;
   color: #2D4F76;
 }
@@ -71,7 +74,7 @@ input[type="text"], input[type="date"], input[type="password"] {
   font-size: 2.5em;
   padding: 10px;
   display: inline-block;
-  background: lightgrey;
+  background: white;
 }
 
 .influencerOption {
@@ -100,7 +103,12 @@ input[type="text"], input[type="date"], input[type="password"] {
 .influencerContent {
   display: inline-block;
   font-size: 1em;
+  padding-bottom: 10px;
   font-weight: 700;
+}
+
+.influencerContent p {
+  font-size: 14px;
 }
 
 .influencerImg img {
@@ -111,13 +119,53 @@ input[type="text"], input[type="date"], input[type="password"] {
 }
 
 .selected {
-  border: 2px solid black;
+  border: 2px solid #2D4F76;
 }
 
 .unselected {
   border: 2px solid lightgrey;
 }
 
+
+.leagueListItem {
+  display: block;
+  border-bottom: 2px solid #2D4F76;
+  padding: 10px;
+  width: 75%;
+  margin: 10px auto;
+  background: white;
+  display: block;
+  text-align: left;
+}
+
+.leagueListItem h3 {
+    margin-right: 20px;
+    display: inline-block;
+}
+
+.timeLeft {
+  position: relative;
+  top: 22px;
+  float: right;
+}
+
+.increase {
+  color: green;
+  font-size: 2em;
+}
+
+.decrease {
+  color: red;
+  font-size: 2em;
+}
+
+
+@media all and (max-width: 500px){ 
+  .navLogo {
+    max-width: 350px;
+  }
+
+}
 
 /* CUSTOM STYLES */
 .footer {

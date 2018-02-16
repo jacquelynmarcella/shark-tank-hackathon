@@ -15,9 +15,26 @@ class Leagues extends Component {
           	<input type="button" value="Join League" disabled />
         </div> 
         <div className="leagueList">
-        	<h5>Celebrity <span className="players">4 players</span> <span className="timeLeft">1 day left</span></h5>
-        	<h5>Celebrity <span className="players">4 players</span> <span className="timeLeft">2 days left</span></h5>
-        	<h5>Celebrity <span className="players">4 players</span> <span className="timeLeft">4 days left</span></h5>
+        	<div className="leagueListItem">
+        		<h3>Celebrity</h3> 
+        		<span className="players">4 players</span>
+        		<span className="timeLeft">1 day left</span>
+        	</div>
+        	<div className="leagueListItem">
+        		<h3>Technology</h3> 
+        		<span className="players">2 players</span>
+        		<span className="timeLeft">3 days left</span>
+        	</div>
+        	<div className="leagueListItem">
+        		<h3>Icons</h3> 
+        		<span className="players">4 players</span>
+        		<span className="timeLeft">4 days left</span>
+        	</div>
+        	<div className="leagueListItem">
+        		<h3>Sports</h3> 
+        		<span className="players">4 players</span>
+        		<span className="timeLeft">7 days left</span>
+        	</div>
         	<p className="finePrint">*All games last 5 days and end at 5pm PST</p>
         </div>
      </div>
