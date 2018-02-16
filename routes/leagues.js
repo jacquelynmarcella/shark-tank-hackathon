@@ -7,20 +7,30 @@ var League = require('../models/league');
 
 router.post('/add', function(req, res, next) {
    console.log("add to user's selection");
-   console.log(req.body.data);
+   //console.log(req.body.data);
    res.send(req.body);
 
    var infList = [];
-
+   var infIds = [];
+   //console.log(influencers);
    for(let i=0; i<req.body.data.selectedList.length; i++) {
-      let id = ""+req.body.data.selectedList[i];
-      infList.push(influencers[id]);
+      for( inf in influencers) {
+         inf= ""+inf;
+         if(influencers[inf].name===req.body.data.selectedList[i]) {
+            //let id = ""+req.body.data.selectedList[i];
+            infList.push(influencers[inf]);
+            infIds.push(inf);
+         }
+      }
    }
 
-   var userInfo = [{
+   console.log(infIds);
+
+
+   var userInfo = {
    		user: req.body.user,
-   		influencer: infList
-   }];
+   		influencer: infIds
+   };
 
    var allUsers = [];
    allUsers.push(userInfo);
@@ -44,7 +54,7 @@ router.post('/add', function(req, res, next) {
             if (!league.user) league.user = [];
             if (!league.influencer) league.influencer = [];
 
-            league.user.push(userInfo);
+            league.user.push({user: req.body.user, influencer: infIds});
             for(let i=0; i<infList.length; i++) {
                league.influencer.push(infList[i]);
             }
