@@ -229,7 +229,7 @@ class Create extends Component {
           <p></p>
 
             {infList.map(item => (
-               <div id={this.props.id}>
+               <div id={this.props.id} className="influencerOption unselected">
                 <div className="influencerImg">
                   <img src={item.imageUrl} />
                 </div>
