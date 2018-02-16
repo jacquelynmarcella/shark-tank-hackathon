@@ -6,7 +6,8 @@ class InfluencerOption extends Component {
   constructor(props){
     super(props);
     this.state = {
-      selected: false
+      selected: false,
+      influencers: {}
     }
     this.handleClick = this.handleClick.bind(this);
   }
@@ -39,16 +40,18 @@ class InfluencerOption extends Component {
     else {
       selectedClass = "influencerOption unselected"
     }
+
+    var imageUrl = this.props.imageUrl;
+
     return(
       <div className={selectedClass} id={this.props.id}>
         <div className="influencerImg">
-          <img src="https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" />
+          <img src={this.props.data.imageUrl} />
         </div>
         <div className="influencerContent">
-          <h5>Name</h5>
-          <p>Stats</p>
-          <p>Stats</p>
-          <button onClick={this.handleClick} id={this.props.id}>+</button>
+          <h3>{this.props.data.name}</h3>
+          <p>{this.props.data.followers} followers</p>
+          <button onClick={this.handleClick} id={this.props.data.name}>+</button>
         </div>
       </div>
     )
@@ -133,11 +136,30 @@ class Create extends Component {
     this.setState({
       inviteKey: randomKey
     })
+
+    var base = this;
+
+    axios.post('/influencers')
+        .then(function (response) {
+           console.log(response.data);
+          base.setState({influencers: JSON.parse(response.data) });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+
+
   }
 
   render(){
     var display; 
     var message;
+
+     var inf2 = [];
+     for (var inf in this.state.influencers) {
+        inf2.push(this.state.influencers[inf])
+     }
 
     if(this.state.creationStage === "step1") {
       display = (
@@ -165,18 +187,13 @@ class Create extends Component {
           <div>
             <h1>Pick your team</h1>
             <p>Select up to 3 players</p>
-            <InfluencerOption handleSelect={this.handleSelect} id="1" />
-            <InfluencerOption handleSelect={this.handleSelect} id="2" />
-            <InfluencerOption handleSelect={this.handleSelect} id="3" />
-            <InfluencerOption handleSelect={this.handleSelect} id="4" />
-            <InfluencerOption handleSelect={this.handleSelect} id="5" />
-            <InfluencerOption handleSelect={this.handleSelect} id="6" />
-            <InfluencerOption handleSelect={this.handleSelect} id="7" />
-            <InfluencerOption handleSelect={this.handleSelect} id="8" />
-            <InfluencerOption handleSelect={this.handleSelect} id="9" />
-            <InfluencerOption handleSelect={this.handleSelect} id="10" />
-            <InfluencerOption handleSelect={this.handleSelect} id="11" />
-            <InfluencerOption handleSelect={this.handleSelect} id="12" />
+
+              {inf2.map(item => (
+
+                <InfluencerOption handleSelect={this.handleSelect} data={item} />
+
+              ))}
+
             <br />
             <center>
               {this.state.message}<br />
