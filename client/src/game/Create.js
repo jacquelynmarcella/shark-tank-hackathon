@@ -7,7 +7,8 @@ class Create extends Component {
     super(props);
     this.state = {
       name: '',
-      startDate: ''
+      startDate: '',
+      inviteKey: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,6 +26,14 @@ class Create extends Component {
     console.log("Axios call for creating new league; this may exist in another component but need to pass the data through here")
   }
 
+  componentDidMount = () => {
+    //Random generator for short shareable key
+    let randomKey = Math.random().toString(36).replace(/[^A-Za-z0-9]+/g, '').substr(0, 5).toUpperCase();
+    this.setState({
+      inviteKey: randomKey
+    })
+  }
+
   render(){
     return(
      <div>
@@ -32,17 +41,17 @@ class Create extends Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           League Name
-          <input name="name" placeholder="Name" type="text" onChange={this.handleChange} value={this.state.name} />
+          <input name="name" placeholder="Name" type="text" onChange={this.handleChange} value={this.state.name} required />
           </label>
           <label>
           Start Date
-          <input name="startDate" type="date" onChange={this.handleChange} />
+          <input name="startDate" type="date" onChange={this.handleChange} required />
           </label>
         </form>
         <input type="button" value="Invite Friends" disabled />
         <input type="submit" value="Create League" onClick={this.handleSubmit} />
         <h3>Copy to invite friends:</h3>
-        <p>CODE HERE</p>
+        <p>{this.state.inviteKey}</p>
      </div>
 
       );

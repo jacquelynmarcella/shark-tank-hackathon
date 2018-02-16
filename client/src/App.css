@@ -9,12 +9,11 @@ header {
 
 label {
   display: block;
-  padding: 10px;
+  padding: 5px;
   margin: 0 auto;
 }
 
 input[type="button"], input[type="submit"], input[type="text"], input[type="date"], input[type="password"]  {
-  padding: 10px;
   padding: 10px;
   margin: 10px;
 }
