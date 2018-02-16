@@ -34,3 +34,9 @@ var leagueScheme = new mongoose.Schema ({
    }
    ]
 });
+
+
+var League = mongoose.model('League', leagueScheme);
+
+module.exports = League;
+

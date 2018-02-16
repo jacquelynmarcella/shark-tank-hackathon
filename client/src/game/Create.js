@@ -80,6 +80,9 @@ class Create extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    let userId = this.props.user.id;
+    let base = this;
+
     if(this.state.creationStage === "step1") {
       this.setState({
         creationStage: "step2"
@@ -91,7 +94,15 @@ class Create extends Component {
           message: 'You can only select 3 players for your team.'
         })
       }
-      console.log("Axios call for creating new league; this may exist in another component but need to pass the data through here")
+      console.log("Axios call")
+      axios.post('/leagues/add',{
+        data: base.state,
+        user: userId
+      }).then(response => {
+        console.log("Got through post route", response)
+      }).catch(err => {
+        console.log("error from backend", err)
+      })
     }
   }
 
@@ -145,7 +156,7 @@ class Create extends Component {
           <input type="button" value="Invite Friends" disabled />
           <input type="submit" value="Create League" onClick={this.handleSubmit} />
           <h3>Copy to invite friends:</h3>
-          <p>{this.state.inviteKey}</p>
+          <p className="inviteFriends">{this.state.inviteKey}</p>
         </div>
       );
     }

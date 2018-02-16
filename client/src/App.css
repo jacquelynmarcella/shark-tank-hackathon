@@ -7,6 +7,51 @@ header {
   padding: 200px 0;
 }
 
+body {
+  font-family: Helvetica Neue;
+  color: #2D4F76;
+  font-size: 18px;
+  background-color: #DCDCDC;
+}
+
+a {
+  color: #2D4F76;
+}
+
+.navbarHeader {
+  background: #2D4F76;
+  margin: 0;
+  padding: 20px;
+  text-align: left;
+}
+
+.nav.navbar-nav ul li {
+  padding: 10px;
+}
+
+.nav.navbar-nav ul li:hover {
+  padding: 10px;
+  background-color: #AFAFAF;
+}
+
+.navLogo {
+  max-width: 150px;
+}
+
+nav {
+  background: #2D4F76;
+}
+
+nav a {
+  font-size: 24px;
+  color: #2D4F76;
+}
+
+nav a:hover {
+  text-decoration: none;
+}
+
+
 label {
   display: block;
   padding: 5px;
@@ -20,6 +65,13 @@ input[type="button"], input[type="submit"], input[type="text"], input[type="date
 
 input[type="text"], input[type="date"], input[type="password"] {
   margin-left: 20px;
+}
+
+.inviteFriends {
+  font-size: 2.5em;
+  padding: 10px;
+  display: inline-block;
+  background: lightgrey;
 }
 
 .influencerOption {

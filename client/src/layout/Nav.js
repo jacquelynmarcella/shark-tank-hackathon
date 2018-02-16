@@ -10,7 +10,7 @@ class SiteNav extends Component {
     if(this.props.user){
       links = (
 
-        <Nav pullRight>
+        <Nav>
             <NavItem eventKey={1}>
               <Link to="/">Home</Link>
             </NavItem>
@@ -39,7 +39,7 @@ class SiteNav extends Component {
     }
     else {
       links = (
-        <Nav pullRight>
+        <Nav>
             <NavItem eventKey={1}>
               <Link to="/">Home</Link>
             </NavItem>
@@ -67,19 +67,19 @@ class SiteNav extends Component {
     }
 
     return(
-        
+      <div>
+        <div className="navbarHeader">
+          <Link to="/"><img src="https://i.imgur.com/TcrPgjp.png" alt="Social Networthing" className="navLogo" /></Link>
+        </div>
       <Navbar collapseOnSelect>
         <Navbar.Header>
-          <Navbar.Brand>
-            <Link to="/">Social Networthing</Link>
-          </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>       
           {links}
         </Navbar.Collapse>
       </Navbar>
-
+      </div>
       );
   }
 }
