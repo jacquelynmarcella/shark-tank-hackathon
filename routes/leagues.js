@@ -7,20 +7,52 @@ var League = require('../models/league');
 
 router.post('/add', function(req, res, next) {
    console.log("add to user's selection");
-   console.log(req.body);
+   console.log(req.body.data);
    res.send(req.body);
+
+   var infList = [];
+
+   for(let i=0; i<req.body.data.selectedList.length; i++) {
+      let id = ""+req.body.data.selectedList[i];
+      infList.push(influencers[id]);
+   }
 
    var userInfo = [{
    		user: req.body.user,
-   		influencers: req.body.data.selectedList
+   		influencer: infList
    }];
 
-   League.create({
-   	name: req.body.data.name,
-   	easyId: req.body.data.inviteKey,
-   	currentUser: userInfo,
-   	startDate: req.body.startDate
-   })
+   var allUsers = [];
+   allUsers.push(userInfo);
+
+   // find league, if exists update, otherwise create
+   League.findOne({easyId: req.body.data.inviteKey}, function(err, league) {
+         if(!league) {
+            //NOT found
+            League.create({
+               name: req.body.data.name,
+               easyId: req.body.data.inviteKey,
+               startDate: req.body.startDate,
+               endDate: 0,
+               user: allUsers,
+               influencer: infList
+
+            }, function(err, league) {
+               //success
+            })
+         } else if(league){
+            if (!league.user) league.user = [];
+            if (!league.influencer) league.influencer = [];
+
+            league.user.push(userInfo);
+            for(let i=0; i<infList.length; i++) {
+               league.influencer.push(infList[i]);
+            }
+            league.save()
+         }
+   });
+
+
 
 });
 
