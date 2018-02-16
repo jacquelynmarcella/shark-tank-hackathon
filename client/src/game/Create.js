@@ -66,7 +66,7 @@ class Create extends Component {
       name: '',
       startDate: '',
       inviteKey: '',
-      creationStage: 'step1'
+      creationStage: 'step1',
       selectedList: [],
       message: ''
     }
@@ -97,13 +97,14 @@ class Create extends Component {
           message: 'You can only select 3 players for your team.'
         })
       }
-      console.log("Axios call")
+      console.log("Axios call");
+
       axios.post('/leagues/add',{
         data: base.state,
         user: userId
       }).then(response => {
         console.log("Got through post route", response)
-        this.setState("creationStage":"step3");
+        base.setState({creationStage:"step3"});
       }).catch(err => {
         console.log("error from backend", err)
       })
@@ -204,17 +205,28 @@ class Create extends Component {
         );
 
     }
-    else if(this.state.creationStage === "step2") {
+    else if(this.state.creationStage === "step3") {
+
+      var infList = [];
+      for (let i=0; i<this.state.influencers.length; i++) {
+         for(let j=0; j<this.state.selectedList.length; j++) {
+            if(this.state.influencers[i].name==this.state.selectedList[j]) {
+               infList.push(this.state.influencers[i]);
+               console.log(this.state.influencers[i])
+            }
+
+         }
+      }
+
       display = (
         <div>
           <h1>{this.state.name}</h1>
           <h2>Your team:</h2>
           <p></p>
 
-            {inf2.map(item => (
-
+            {infList.map(item => (
              <div>
-               
+               <h4>{item.name}</h4>
              </div>
 
             ))}
@@ -222,7 +234,7 @@ class Create extends Component {
           <br />
           <center>
             {this.state.message}<br />
-           <input type="submit" value="Create League" onClick={this.handleSubmit} />
+
           </center>
         </div>
       );
