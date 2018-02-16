@@ -14,7 +14,7 @@ class InfluencerOption extends Component {
   //On click, add to data
   handleClick = (event) => {
     event.preventDefault();
-    console.log("event.target",event.target);
+    console.log("event.target attr",event.target.attr);
     console.log("event target id", event.target.id);
     this.props.handleSelect(event.target.id);
     if (this.state.selected === false){
@@ -40,7 +40,7 @@ class InfluencerOption extends Component {
     }
     return(
       <a href={this.props.id} alt="Select influencerOption" onClick={this.handleClick} id={this.props.id}>
-      <div className={selectedClass}>
+      <div className={selectedClass} id={this.props.id}>
         <div className="influencerImg">
           <img src="https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" />
         </div>
