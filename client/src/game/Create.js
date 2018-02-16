@@ -8,11 +8,13 @@ class InfluencerOption extends Component {
     this.state = {
       selected: false
     }
+    this.handleClick = this.handleClick.bind(this);
   }
 
   //On click, add to data
   handleClick = (event) => {
     event.preventDefault();
+    console.log("event.target",event.target);
     console.log("event target id", event.target.id);
     this.props.handleSelect(event.target.id);
     if (this.state.selected === false){
@@ -89,7 +91,7 @@ class Create extends Component {
   }
 
   handleSelect = (data) => {
-    console.log(data);
+    console.log("handleSubmit in parent",data);
   }
     
   componentDidMount = () => {

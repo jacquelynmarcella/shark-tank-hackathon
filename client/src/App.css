@@ -23,7 +23,6 @@ input[type="text"], input[type="date"], input[type="password"] {
 }
 
 .influencerOption {
-  border-radius: 10px;
   display: inline-block;
   width: 200px;
   height: 300px;
@@ -38,8 +37,9 @@ input[type="text"], input[type="date"], input[type="password"] {
 }
 
 .influencerImg {
-  width: 100px;
-  height: 200px;
+  margin: 0;
+  width: 200px;
+  height: 100px;
   overflow: hidden;
   display: inline-block;
 }
