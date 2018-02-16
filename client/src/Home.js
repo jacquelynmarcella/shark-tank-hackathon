@@ -8,8 +8,9 @@ class Home extends Component {
         <div>
         	<header>
           <div className="headerText">
-        		<h1>Welcome text</h1>
-            <h3>Selling point!</h3>
+        		<h1>Who will win the game of relevance?</h1>
+            <h3>Draft your team of influencers and battle head-to-head against your friends</h3>
+            <h3>May the most influential win!</h3>
           </div>
         	</header>
         	<h2>Signup</h2>

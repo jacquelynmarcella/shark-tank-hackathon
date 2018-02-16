@@ -14,7 +14,7 @@ class Profile extends Component {
               <h2>{this.props.user.name}</h2>
               <p><b>Games Won:</b> 20</p>
               <p><b>Games Lost:</b> 4</p>
-              <p>You're ranked <b>121st</b> out of 1,200,382 players.</p>
+              <p><b>Rank:</b> 121 / 1,200,382 </p>
             </div>
           </div>
 

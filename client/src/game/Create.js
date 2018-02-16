@@ -201,6 +201,7 @@ class Create extends Component {
               {this.state.message}<br />
              <input type="submit" value="Create League" onClick={this.handleSubmit} />
             </center>
+             <br /><br /><br />
           </div>
         );
 
@@ -224,8 +225,7 @@ class Create extends Component {
 
       display = (
         <div>
-          <h1>{this.state.name}</h1>
-          <h2>Your team:</h2>
+          <h2>League: {this.state.name}</h2>
           <p></p>
 
             {infList.map(item => (
@@ -243,9 +243,10 @@ class Create extends Component {
 
           <br />
           <center>
-            {this.state.message}<br />
-
+            <h3>Copy to invite friends:</h3>
+            <p className="inviteFriends">{this.state.inviteKey}</p>
           </center>
+          <br /><br /><br />
         </div>
       );
 

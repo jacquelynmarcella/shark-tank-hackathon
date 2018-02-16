@@ -4,14 +4,16 @@ header {
   margin: 0 auto;
   margin-top: -70px; 
   padding: 100px 0;
-  background: url("https://i.imgur.com/GmJQAfy.png");
+  background: url("http://i.imgur.com/GmJQAfy.png");
   background-size: cover;
 }
 
 .headerText {
   padding: 50px;
   background: rgba(256,256,256, .8);
-  width: 80%;
+  width: 60%;
+  margin: 0 auto;
+  text-align: left;
 }
 
 
@@ -191,6 +193,11 @@ input[type="text"], input[type="date"], input[type="password"] {
   .navLogo {
     max-width: 350px;
   }
+
+  .headerText {
+    width: 100%;
+}
+
 
 }
 

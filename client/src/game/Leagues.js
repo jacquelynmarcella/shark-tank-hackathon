@@ -14,6 +14,23 @@ class Leagues extends Component {
             </form>
           	<input type="button" value="Join League" disabled />
         </div> 
+
+        <hr />
+
+        <h4>Pending Leagues</h4>
+        <div className="leagueList">
+        	<div className="leagueListItem">
+        		<h3>Celebrity</h3> 
+        		<span className="players">1 player</span>
+        		&nbsp; &nbsp; &nbsp; 
+        		<span className="players">Invite Code: FL802</span>
+        		<span className="timeLeft">Starts in 2 days</span>
+        	</div>
+        </div>
+
+        <br /><br />
+
+		<h4>Active Leagues</h4>
         <div className="leagueList">
         	<div className="leagueListItem">
         		<h3>Celebrity</h3> 
