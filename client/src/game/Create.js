@@ -66,7 +66,7 @@ class Create extends Component {
       name: '',
       startDate: '',
       inviteKey: '',
-      creationStage: 'step1',
+      creationStage: 'step1'
       selectedList: [],
       message: ''
     }
@@ -103,7 +103,7 @@ class Create extends Component {
         user: userId
       }).then(response => {
         console.log("Got through post route", response)
-        res.redirect("/view");
+        this.setState("creationStage":"step3");
       }).catch(err => {
         console.log("error from backend", err)
       })
@@ -204,6 +204,31 @@ class Create extends Component {
         );
 
     }
+    else if(this.state.creationStage === "step2") {
+      display = (
+        <div>
+          <h1>{this.state.name}</h1>
+          <h2>Your team:</h2>
+          <p></p>
+
+            {inf2.map(item => (
+
+             <div>
+               
+             </div>
+
+            ))}
+
+          <br />
+          <center>
+            {this.state.message}<br />
+           <input type="submit" value="Create League" onClick={this.handleSubmit} />
+          </center>
+        </div>
+      );
+
+    }
+
 
     return(
      <div>
