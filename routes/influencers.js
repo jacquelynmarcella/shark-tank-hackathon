@@ -7,7 +7,7 @@ var influencers = require("../influencers-list.js");
 router.post('/', function(req, res, next) {
    console.log("influencer get all");
 
-   res.json(influencers);
+   res.json(JSON.stringify(influencers));
 });
 
 

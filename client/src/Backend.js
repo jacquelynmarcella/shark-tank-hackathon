@@ -2,6 +2,22 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+
+
+// const Info = (list) => (
+//    if(!list) return;
+//    list.map((inf)=> (
+//     <div>
+//         <img src='{inf.imageUrl}' />
+//         <div>
+//            Name: {inf.name}
+//         </div>
+//         <div>
+//
+//         </div>
+//     </div> ))
+// )
+
 class Backend extends Component {
 
    constructor(props) {
@@ -12,11 +28,12 @@ class Backend extends Component {
       }
    }
 
-   componentDidMount() {
-
+   componentDidMount = () => {
+      var base = this;
       axios.post('/influencers')
         .then(function (response) {
-          this.setState({influencers: JSON.parse(response.data)});
+           console.log(response.data);
+          base.setState({influencers: JSON.parse(response.data) });
         })
         .catch(function (error) {
           console.log(error);
@@ -25,24 +42,26 @@ class Backend extends Component {
    }
 
   render() {
-    const infList = Object.keys(this.state.influencers).forEach((inf)=> {
-      <div>
-          <img src='{inf.imageUrl}' />
-          <div>
-             Name: {inf.name}
-          </div>
-          <div>
+   //   console.log(Object.keys(this.state.influencers));
 
-          </div>
-      </div>
-   });
+     var inf2 = [];
+     for (var inf in this.state.influencers) {
+        inf2.push(this.state.influencers[inf])
+     }
+
 
     return(
      <div>
      	Backend
       <div>
-         { infList }
+
+      {inf2.map(item => (<div>
+         <h1>{item.name}</h1>
+         <img src={item.imageUrl} />
+         </div>
+      ))}
       </div>
+
      </div>
 
 
