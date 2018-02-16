@@ -14,7 +14,8 @@ class InfluencerOption extends Component {
   //On click, add to data
   handleClick = (event) => {
     event.preventDefault();
-    console.log("event.target attr",event.target.attr);
+    console.log(event);
+    console.log("event.target attr",event.target);
     console.log("event target id", event.target.id);
     this.props.handleSelect(event.target.id);
     if (this.state.selected === false){
@@ -39,7 +40,6 @@ class InfluencerOption extends Component {
       selectedClass = "influencerOption unselected"
     }
     return(
-      <a href={this.props.id} alt="Select influencerOption" onClick={this.handleClick} id={this.props.id}>
       <div className={selectedClass} id={this.props.id}>
         <div className="influencerImg">
           <img src="https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" />
@@ -48,14 +48,13 @@ class InfluencerOption extends Component {
           <h5>Name</h5>
           <p>Stats</p>
           <p>Stats</p>
+          <button onClick={this.handleClick} id={this.props.id}>+</button>
         </div>
       </div>
-      </a>
     )
 
   }
 }
-
 
 class Create extends Component {
   constructor(props){
@@ -65,7 +64,8 @@ class Create extends Component {
       startDate: '',
       inviteKey: '',
       creationStage: 'step1',
-      selectedList: []
+      selectedList: [],
+      message: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -86,12 +86,34 @@ class Create extends Component {
       })
     }
     else if(this.state.creationStage === "step2") {
+      if(this.state.selectedList.length > 3) {
+        this.setState({
+          message: 'You can only select 3 players for your team.'
+        })
+      }
       console.log("Axios call for creating new league; this may exist in another component but need to pass the data through here")
     }
   }
 
   handleSelect = (data) => {
     console.log("handleSubmit in parent",data);
+    let selectedPeople = this.state.selectedList
+
+    if (selectedPeople.includes(data)) {
+      for (var i=selectedPeople.length-1; i>=0; i--) {
+          if (selectedPeople[i] == data) {
+            selectedPeople.splice(i, 1);  
+          }
+      }
+    } else {
+      selectedPeople.push(data);
+    }
+
+    this.setState({
+      selectedList: selectedPeople
+    })
+
+    console.log(this.state)
   }
     
   componentDidMount = () => {
@@ -104,6 +126,8 @@ class Create extends Component {
 
   render(){
     var display; 
+    var message;
+
     if(this.state.creationStage === "step1") {
       display = (
         <div>
@@ -129,6 +153,7 @@ class Create extends Component {
         display = (
           <div>
             <h1>Pick your team</h1>
+            <p>Select up to 3 players</p>
             <InfluencerOption handleSelect={this.handleSelect} id="1" />
             <InfluencerOption handleSelect={this.handleSelect} id="2" />
             <InfluencerOption handleSelect={this.handleSelect} id="3" />
@@ -143,10 +168,12 @@ class Create extends Component {
             <InfluencerOption handleSelect={this.handleSelect} id="12" />
             <br />
             <center>
-             <input type="submit" value="Create League" onClick={this.handleSubmit} />
+              {this.state.message}<br />
+             <input type="submit" value="Create League" onClick={this.handleSubmit} />           
             </center>
           </div>
         );
+
     }
 
     return(
