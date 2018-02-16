@@ -25,7 +25,8 @@ app.use(function(req, res, next) {
 
 // Controllers
 app.use('/auth', require('./routes/auth'));
-app.use('/infuencers', require('./routes/influencers'));
+app.use('/influencers', require('./routes/influencers'));
+app.use('/leagues', require('./routes/leagues'));
 
 app.get('*', function(req, res, next) {
 	res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
