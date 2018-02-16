@@ -22,6 +22,50 @@ input[type="text"], input[type="date"], input[type="password"] {
   margin-left: 20px;
 }
 
+.influencerOption {
+  border-radius: 10px;
+  display: inline-block;
+  width: 200px;
+  height: 300px;
+  margin: 10px;
+  background: lightgrey;
+}
+
+.influencerBox {
+  display: inline-block;
+  margin-right: 20px;
+  padding: 0;
+}
+
+.influencerImg {
+  width: 100px;
+  height: 200px;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.influencerContent {
+  display: inline-block;
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.influencerImg img {
+  max-width: 150px;
+  min-width: 100px;
+  max-height: 200px;
+  min-height: 100px;
+}
+
+.selected {
+  border: 2px solid black;
+}
+
+.unselected {
+  border: 2px solid lightgrey;
+}
+
+
 /* CUSTOM STYLES */
 .footer {
   background-color: #555;
